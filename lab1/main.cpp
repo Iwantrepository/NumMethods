@@ -2,6 +2,7 @@
 #include <iostream>
 #include <math.h>
 
+
 #include "MyFloat.h"
 
 using namespace std;
@@ -25,13 +26,13 @@ int main(void)
 	cout << "Accuracy: 1) " << a1.abs_inf << " 2) " << a2.abs_inf << '\n';
 	cout << ((a1.abs_inf<a2.abs_inf)?"First":"Second") << " statement is more accurate.\n\n";
 //----------2)----------
+	cout << "Input data: number = 24.5643, relative infelicity = 0.1%\n";
 	a1.wipe();
 	a1.number = nums2[0];
-	a1.otn_inf = nums2[1];
-	a1.abs_inf = a1.number*a1.otn_inf/100;
-	cout << a1.number <<" "<< a1.abs_inf<<'\n';
-
-
+	a1.fill_from_otn_inf(nums2[1]);
+	cout << "Number in right digits: " << a1.number <<"\nAbsolute infelicity: "<< a1.abs_inf<<"\n\n";
+//----------3)----------
+	
 
 	printf("\nEnd of program\n");
 }
