@@ -21,8 +21,35 @@ void MyFloat::wipe()
 	otn_inf = 0;
 }
 
-int MyFloat::fill_from_otn_inf( float _otn_inf )
+int MyFloat::fill_from_r_d_num( float _number)
 {
+	number = _number;
+	
+	std::string str_number = std::to_string(number);
+	
+	for (int i = 0; i<str_number.size(); i++)
+		std::cout << str_number[i];
+	std::cout << '\n';
+	
+	for (int i = str_number.size() - 1; str_number[i] == '0'; i-- ){
+		str_number[i]='\0';
+	}
+	int i = 0;
+	while( str_number[i] != '\0' ){
+		if( str_number[i] != '.' ){
+			str_number[i] = '0';
+		}
+		i++;
+	}
+	str_number[i-1]='1';
+	abs_inf = std::stof(str_number)/2;
+	otn_inf = abs_inf/number;
+	return 0;
+}
+
+int MyFloat::fill_from_otn_inf( float _number, float _otn_inf )
+{
+	number = _number;
 	abs_inf = number * _otn_inf / 100;
 	std::string str_number = std::to_string(number);
 	int first_digit, i=0;
@@ -55,4 +82,11 @@ int MyFloat::fill_from_otn_inf( float _otn_inf )
 	abs_inf += abs(number - new_number);
 	otn_inf = abs_inf/new_number;
 	number = new_number;
+	return 0;
+}
+
+int MyFloat::fill_from_abs_inf( float _number, float _abs_inf )
+{
+	fill_from_otn_inf(_number, abs_inf/number);
+	return 0;
 }
