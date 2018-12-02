@@ -47,15 +47,14 @@ int main(void)
 	a4.fill_from_r_d_num(nums4[3]);
 	a5.fill_from_r_d_num(nums4[4]);
 	//((a1+a2)*a3/(a4-a5))^2  =>  ((a1)*a3/(a4))^2
-	//a1.number += a2.number;
-	//a1.abs_inf += a2.abs_inf;
-	cout << a1.number + a2.number <<' '<< a1.abs_inf <<' '<< a2.abs_inf<<'\n';
 	a1.fill_from_abs_inf(a1.number + a2.number, a1.abs_inf + a2.abs_inf);
-	cout << "Number in right digits: " << a1.number <<"\nAbsolute infelicity: "<< a1.abs_inf<<"\n\n";
-	
-	a4.number -= a5.number;
-	a4.abs_inf += a5.abs_inf;
-
-
-	printf("\nEnd of program\n");
+	a4.fill_from_abs_inf(a4.number - a5.number, a4.abs_inf + a5.abs_inf);	
+	//((a1)*a3/(a4))^2 => (a1/a4)^2
+	a1.fill_from_otn_inf(a1.number * a3.number, a1.otn_inf + a3.otn_inf);
+	//(a1/a4)^2 => a1^2
+	a1.fill_from_otn_inf( a1.number / a4.number, a1.otn_inf + a4.otn_inf);
+	//a1^2 = a1
+	a1.fill_from_otn_inf( a1.number * a1.number, a1.otn_inf + a1.otn_inf);	//1899.5123291
+	std::cout << "Result: " << a1.number << "\nInfelicity: ";
+	printf("%f\n", a1.abs_inf);
 }
