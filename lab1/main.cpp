@@ -17,13 +17,16 @@ int main(void)
 	
 	int i = 0;
 	float x = 1;
+	float xn;
 	float acc = 0.001;
-	
+	float acc_buf;
+	printf("x%d = %f\n", i, x);
 	do{
-		x = polynom(x);
-		//cout << "x" << i << " "<< x << endl;
-		printf("x%d = %f  accuracy: %f\n", i, x, abs(x-polynom(x)));
 		i++;
-	}while(abs(x-polynom(x))>acc);
+		xn = polynom(x);
+		acc_buf = abs(xn-x);
+		printf("x%d = %f  accuracy: %f\n", i, xn, acc_buf);
+		x = xn;
+	}while(acc_buf > acc);
 	printf("Result: f(x%d) = %f",i,x);
 }
