@@ -1,3 +1,3 @@
 all:
-	g++ main.cpp MyFloat.cpp -o result
+	g++ main.cpp -o result
 	./result
