@@ -28,5 +28,5 @@ int main(void)
 		printf("x%d = %f  accuracy: %f\n", i, xn, acc_buf);
 		x = xn;
 	}while(acc_buf > acc);
-	printf("Result: f(x%d) = %f",i,x);
+	printf("Result: f(x%d) = %f",i,(x*x*x - 0.2*x*x +0.4*x -1.4));
 }
