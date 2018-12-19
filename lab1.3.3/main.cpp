@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <math.h>
 
@@ -32,7 +33,7 @@ int main(void)
 		i++;
 		an = a - (func(a))*(b-a)/(func(b)-func(a));
 		bn = b - (func(b))/(funcp(b));
-		acc_buf = abs(an-bn);
+		acc_buf = fabs(an-bn);
 		printf("a%d = %f b%d = %f  accuracy: %f\n", i, an, i, bn, acc_buf);
 		a = an;
 		b = bn;

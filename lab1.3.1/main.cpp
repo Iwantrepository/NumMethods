@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <math.h>
 
@@ -24,7 +25,7 @@ int main(void)
 	do{
 		i++;
 		xn = x-(x-1)*(func(x))/(func(x)-func(1));
-		acc_buf = abs(xn-x);
+		acc_buf = fabs(xn-x);
 		printf("x%d = %f  accuracy: %f\n", i, xn, acc_buf);
 		x = xn;
 	}while(acc_buf > acc);
