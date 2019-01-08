@@ -38,8 +38,6 @@ double derX2Second(double x2)
 
 int main()
 {
-	cout << "\nf(x1) = sin(x-1)-1.3+y\nf(x2) = x-sin(y+1)-0.8" << endl << endl;
-
 	const int SIZE = 2;
 
 	long double vec[SIZE];
@@ -56,7 +54,7 @@ int main()
 	matrix[1][0] = derX1Second(vec[0]);
 	matrix[1][1] = derX2Second(vec[1]);
 
-	cout << "W(x0)" << endl;
+	cout << "W(x0,y0)" << endl;
 	for (int i = 0; i < SIZE; ++i)
 	{
 		for (int j = 0; j < SIZE; ++j)
@@ -69,7 +67,7 @@ int main()
 	cout << endl;
 
 	double det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
-	cout << "DetW(x0): " << det << endl;
+	cout << "DetW(x0,y0): " << det << endl;
 
 	double temp1 = matrix[0][0];
 	matrix[0][0] = matrix[1][1];
@@ -86,7 +84,7 @@ int main()
 
 	cout << endl;
 
-	cout << "(W(x0))^-1" << endl;
+	cout << "(W(x0,y0))^-1" << endl;
 	for (int i = 0; i < SIZE; ++i)
 	{
 		for (int j = 0; j < SIZE; ++j)
@@ -116,7 +114,7 @@ int main()
 		iterArr[0][i] = vec[i];
 	}
 
-	cout << "N " << "X1\t  " << "X2\t  " << "Acc" << endl;
+	cout << "N " << "X\t  " << "Y\t  " << "Acc" << endl;
 	cout << "0 " << iterArr[0][0] << " " << iterArr[0][1] << endl;
 
 	int n = 0;
@@ -147,8 +145,8 @@ int main()
 		if (max < 0.001)
 		{
 			cout << "\n\nResult: " << endl;
-			cout << "f(x1) = " << First(vec[0], vec[1]) << endl;
-			cout << "f(x2) = " << Second(vec[0], vec[1]) << endl;
+			cout << "f(x,y) = " << First(vec[0], vec[1]) << endl;
+			cout << "f(x,y) = " << Second(vec[0], vec[1]) << endl;
 			break;
 		}
 		else max = 0;
