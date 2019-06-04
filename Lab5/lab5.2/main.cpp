@@ -12,7 +12,7 @@ double f1(double x)
     return 1/(3*x*x-1);
 }
 
-double fTrap()
+double Trapezium()
 {
     double a = 1.4;
     double b = 2.1;
@@ -32,7 +32,7 @@ double f2(double x)
     return (log10(x*x+1))/x;
 }
 
-double fSimp(int k)
+double Simpson(int k)
 {
     double a = 0.8;
     double b = 1.6;
@@ -62,7 +62,7 @@ double f3(double x)
     return sqrt(x*x+1)/(x+2);
 }
 
-double fGaussa4()
+double Gauss_4()
 {
     double x[4];
     x[0] = -0.861136; x[1] = -0.339981;
@@ -79,7 +79,7 @@ double fGaussa4()
     return (0.34785*(f3(x[0]) + f3(x[3])) + 0.65215*(f3(x[1]) + f3(x[2])));
 }
 
-double fGaussa5()
+double Gauss_5()
 {
     double x[5];
     x[0] = -0.90618; x[1] = -0.53847; x[2] = 0;
@@ -100,22 +100,22 @@ int main()
 {
     cout << endl;
     cout << "dx/(3x^2-1) from 1.4 to 2.1 [trapezium]" << endl;
-    cout << fTrap() << endl;
+    cout << Trapezium() << endl;
 
     cout << endl;
 
     cout << "lg(x^2+1)dx/x from 0.8 to 1.6 [Simpson]" << endl;
-    cout << fSimp(8) << endl;
+    cout << Simpson(8) << endl;
     cout << "R = ";
-    cout << (fSimp(8) - fSimp(4))/15 << endl;
+    cout << (Simpson(8) - Simpson(4))/15 << endl;
 
     cout << endl;
 
     cout << "sqrt(x^2+1)dx/(x+2)  from 0.2 to 2.4 [Gauss]" << endl;
     cout << "n = 4" << endl;
-    printf("%.6f\n", fGaussa4());
+    printf("%.6f\n", Gauss_4());
     cout << "n = 5" << endl;
-    printf("%.6f\n", fGaussa5());
+    printf("%.6f\n", Gauss_5());
 
     return 0;
 }
