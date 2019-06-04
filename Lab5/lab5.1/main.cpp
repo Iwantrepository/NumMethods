@@ -205,14 +205,14 @@ int main()
 {
     cout << "Newton" << endl;
     int n = sizeof(X)/sizeof(double);
-    for (int i = 1; i <= 12; i+=2)
+    for (int i = 1; i <= 11; i+=2)
     {
         double x = 3.32 + 0.02*i;
         printf("f'(%.2f) = %f\n",x , Newton_d1(x,n,Y));
     }
 
     cout << "---" << endl;
-    for (int i = 1; i <=12; i+=2)
+    for (int i = 1; i <=11; i+=2)
     {
         double x = 3.32 + 0.02*i;
         printf("f''(%.2f) = %f\n",x , Newton_d2(x,n,Y));
@@ -222,19 +222,22 @@ int main()
 	n = sizeof(X)/sizeof(double);
     double Stirling_dx[21];
     double Stirling_dy[21];
-    for (int i = 1; i <= 11; i++)
+    for (int i = 0; i <= 20; i++)
     {
-        Stirling_dx[i] = 3.82 + 0.02*i;
+        Stirling_dx[i] = 3.82 + 0.02*i;// - 11*0.02;
         Stirling_dy[i] = Stirling(Stirling_dx[i], n, Y);
     }
     double h = Stirling_dx[1] - Stirling_dx[0];
-    for (int i = 1; i <= 11; i+=2)
+	n = 11;
+	//h = 0.02;
+	int AAA = 3;
+    for (int i = 1+AAA; i <= 11+AAA; i+=2)
     {
         printf("f'(%.2f) = %f\n", Stirling_dx[i], Stirling_d1(i, n, Stirling_dy, h));
     }
 
     cout << "---" << endl;
-    for (int i = 1; i <= 11; i+=2)
+    for (int i = 1+AAA; i <= 11+AAA; i+=2)
     {
         printf("f''(%.2f) = %f\n", Stirling_dx[i], Stirling_d2(i, n, Stirling_dy, h));
     }
